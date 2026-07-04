@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isAnimating = true;
         placeBtn.disabled = true;
 
+        const currentStackHeight = blockCount * blockHeight;
+
         // Animate held block to stack
-        heldBlock.classList.add('placing');
+        heldBlock.style.transition = 'all 0.3s ease';
+        heldBlock.style.transform = `translate(-120px, -${currentStackHeight}px)`;
+        heldBlock.style.width = '80px';
+        heldBlock.style.height = '80px';
+        heldBlock.style.opacity = '0';
 
         setTimeout(() => {
             // Add block to stack
@@ -35,25 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             blockCount++;
 
-            // Reset held block
-            heldBlock.classList.remove('placing');
-
-            // Move man up to match stack height (he stays on the ground, but relative to camera he goes up if camera doesn't follow)
-            // Wait, standard infinite jumper: move man up, then move camera down to follow.
-
-            const currentStackHeight = blockCount * blockHeight;
-
-            // Move the man up
-            manContainer.style.bottom = `${100 + currentStackHeight}px`;
-
-            // Adjust camera to keep the man and top block in view
+            // Adjust camera to keep top block in view
             // Move camera down by the height of one block
-            camera.style.transform = `translateY(${currentStackHeight}px)`;
+            const newStackHeight = blockCount * blockHeight;
+            camera.style.transform = `translateY(${newStackHeight}px)`;
+
+            // Reset held block
+            heldBlock.style.transition = 'none';
+            heldBlock.style.transform = 'translate(0, 0)';
+            heldBlock.style.width = '50px';
+            heldBlock.style.height = '50px';
+            heldBlock.style.opacity = '1';
 
             setTimeout(() => {
                 isAnimating = false;
                 placeBtn.disabled = false;
-            }, 500); // Wait for man/camera transition
+            }, 500);
 
         }, 300); // Wait for placing animation
     });
