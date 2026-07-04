@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body, html {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #87CEEB; /* Sky blue */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+#play-btn {
+    font-size: 3rem;
+    padding: 20px 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#play-btn:hover {
+    transform: scale(1.05);
+    background-color: #45a049;
+}
+
+#play-btn:active {
+    transform: scale(0.95);
+}
+
+#game-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#ui-left {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+#place-btn {
+    font-size: 1.5rem;
+    padding: 20px 30px;
+    background-color: #8B4513; /* Dirt brown */
+    color: white;
+    border: 4px solid #556B2F; /* Grass green */
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    transition: transform 0.1s, filter 0.2s;
+}
+
+#place-btn:hover {
+    filter: brightness(1.1);
+}
+
+#place-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#place-btn:disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+#game-world {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#camera {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, #556B2F 20px, #8B4513 20px);
+}
+
+#stack-container {
+    position: absolute;
+    bottom: 100px;
+    right: 200px;
+    width: 80px;
+    display: flex;
+    flex-direction: column-reverse; /* Stack from bottom up */
+    align-items: center;
+}
+
+#man-container {
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.5s ease-in-out;
+}
+
+#man {
+    font-size: 5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.dirt-block {
+    width: 80px;
+    height: 80px;
+    background-color: #8B4513;
+    border: 2px solid #5c2e0b;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.dirt-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: #4CAF50; /* Grass top */
+}
+
+/* The block currently held by the man */
+#held-block {
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+#held-block.placing {
+    left: -120px;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+}

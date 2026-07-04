@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Block Placer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <button id="play-btn">▶ Play</button>
+    </div>
+
+    <div id="game-screen" class="hidden">
+        <div id="ui-left">
+            <button id="place-btn">Place the block</button>
+        </div>
+
+        <div id="game-world">
+            <div id="camera">
+                <div id="ground"></div>
+                <div id="stack-container"></div>
+                <div id="man-container">
+                    <div id="man">🧍‍♂️</div>
+                    <div id="held-block" class="dirt-block"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
