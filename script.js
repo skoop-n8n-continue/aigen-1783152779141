@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const manContainer = document.getElementById('man-container');
     const heldBlock = document.getElementById('held-block');
     const camera = document.getElementById('camera');
+    const restartBtn = document.getElementById('restart-btn');
 
     let blockCount = 0;
     const blockHeight = 80;
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start Game
     playBtn.addEventListener('click', () => {
+        restartBtn.classList.remove('hidden');
         startScreen.classList.add('hidden');
         gameScreen.classList.remove('hidden');
     });
@@ -59,5 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
 
         }, 300); // Wait for placing animation
+    });
+
+    // Restart Game
+    restartBtn.addEventListener('click', () => {
+        // Reset state variables
+        blockCount = 0;
+        isAnimating = false;
+        placeBtn.disabled = false;
+
+        // Reset DOM elements
+        stackContainer.innerHTML = ''; // Remove all placed blocks
+        camera.style.transform = `translateY(0px)`; // Reset camera
+
+        // Reset held block position immediately
+        heldBlock.style.transition = 'none';
+        heldBlock.style.transform = 'translate(0, 0)';
+        heldBlock.style.width = '50px';
+        heldBlock.style.height = '50px';
+        heldBlock.style.opacity = '1';
+        
+        // Hide game and show start screen
+        gameScreen.classList.add('hidden');
+        startScreen.classList.remove('hidden');
+        restartBtn.classList.add('hidden');
     });
 });
