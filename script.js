@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heldBlock = document.getElementById('held-block');
     const camera = document.getElementById('camera');
     const restartBtn = document.getElementById('restart-btn');
+    const blockCountDisplay = document.getElementById('block-count');
 
     let blockCount = 0;
     const blockHeight = 80;
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stackContainer.appendChild(newBlock);
 
             blockCount++;
+            blockCountDisplay.innerText = blockCount;
 
             // Adjust camera to keep top block in view
             // Move camera down by the height of one block
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     restartBtn.addEventListener('click', () => {
         // Reset state variables
         blockCount = 0;
+        blockCountDisplay.innerText = blockCount;
         isAnimating = false;
         placeBtn.disabled = false;
 
