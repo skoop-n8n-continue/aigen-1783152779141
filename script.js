@@ -45,8 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
             blockCount++;
             blockCountDisplay.innerText = blockCount;
 
-            // Change background after 10 blocks
-            if (blockCount >= 10) {
+            // Change background based on block count
+            if (blockCount >= 30) {
+                document.body.style.backgroundImage = 'url("https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/n8n_continue%2Faigen-1783152779141%2Fassets%2Fminecraft_space-1783158502771.png")';
+            } else if (blockCount >= 10) {
                 document.body.style.backgroundImage = 'url("https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/n8n_continue%2Faigen-1783152779141%2Fassets%2Fminecraft_sky-1783158287915.png")';
             }
 
