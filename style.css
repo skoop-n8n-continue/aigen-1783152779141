@@ -14,6 +14,7 @@ body, html {
     background-size: cover;
     background-position: bottom;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-image 2s ease;
 }
 
 .hidden {
