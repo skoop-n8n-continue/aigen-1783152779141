@@ -1,0 +1,1 @@
+sed -i 's/background-color: #87CEEB; \/\* Sky blue \*\//background-color: #87CEEB; \/\* Sky blue \*\/\n    background-image: url("https:\/\/loremflickr.com\/1920\/1080\/cityscape?random=1");\n    background-size: cover;\n    background-position: bottom;/g' style.css
